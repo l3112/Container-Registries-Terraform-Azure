@@ -1,0 +1,20 @@
+resource "azurerm_container_registry" "Con_Reg" {
+    name = "RUNTCPIP"
+    resource_group_name = var.resourceGroupName
+    location = var.location
+    admin_enabled = true
+    sku = "Basic"
+}
+
+output "registry_hostname" {
+    value = azurerm_container_registry.Con_Reg.login_server
+}
+
+output "registry_un" {
+    value = azurerm_container_registry.Con_Reg.admin_username
+}
+
+output "registry_pw" {
+    value = azurerm_container_registry.Con_Reg.admin_password
+    sensitive = true
+}
